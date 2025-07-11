@@ -1,3 +1,4 @@
+[![codecov](https://codecov.io/gh/muhajirshiddiqaf/AI-assisted-unit-testing/branch/main/graph/badge.svg)](https://codecov.io/gh/muhajirshiddiqaf/AI-assisted-unit-testing)
 # Update-Profile: A Fullstack Next.js Project
 
 ## **Nama: Muhajir Shiddiq Al Faruqi**

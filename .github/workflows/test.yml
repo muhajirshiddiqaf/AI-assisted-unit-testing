@@ -45,3 +45,30 @@ jobs:
         echo "- Node.js Version: ${{ matrix.node-version }}" >> $GITHUB_STEP_SUMMARY
         echo "- Test Status: ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
         echo "- Coverage Report: Available in Codecov" >> $GITHUB_STEP_SUMMARY 
+
+    - name: Send Telegram notification on success
+      if: success()
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          ✅ CI Success!
+          Repo: ${{ github.repository }}
+          Branch: ${{ github.ref_name }}
+          Commit: ${{ github.sha }}
+          By: ${{ github.actor }}
+
+    - name: Send Telegram notification on failure
+      if: failure()
+      uses: appleboy/telegram-action@master
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        message: |
+          ❌ CI Failed!
+          Repo: ${{ github.repository }}
+          Branch: ${{ github.ref_name }}
+          Commit: ${{ github.sha }}
+          By: ${{ github.actor }}
+          Check logs: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }} 
