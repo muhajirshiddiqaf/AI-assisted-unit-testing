@@ -40,15 +40,14 @@ describe("ProfilePage", () => {
 
   it("shows validation errors for empty/invalid fields", async () => {
     render(<ProfilePage />);
+    fireEvent.change(screen.getByLabelText(/Email/i), { target: { value: "invalid-email" } });
     fireEvent.click(screen.getByRole("button", { name: /Update/i }));
 
     expect(
       await screen.findByText(/Username must be at least 6 characters/i)
     ).toBeInTheDocument();
     expect(screen.getByText(/Full name is required/i)).toBeInTheDocument();
-    expect(
-      screen.getByText(/Must be a valid email format/i)
-    ).toBeInTheDocument();
+    expect(screen.getByText(/Must be a valid email format/i)).toBeInTheDocument();
     expect(screen.getByText(/Phone must be 10-15 digits/i)).toBeInTheDocument();
   });
 

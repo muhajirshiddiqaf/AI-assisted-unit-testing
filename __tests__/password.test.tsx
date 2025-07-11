@@ -32,9 +32,9 @@ describe("PasswordPage", () => {
     render(<PasswordPage />);
     
     expect(screen.getByRole("heading", { name: "Change Password" })).toBeInTheDocument();
-    expect(screen.getByLabelText(/Current Password/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/New Password/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/Confirm New Password/i)).toBeInTheDocument();
+    expect(screen.getByLabelText('Current Password', { selector: 'input', exact: true })).toBeInTheDocument();
+    expect(screen.getByLabelText('New Password', { selector: 'input', exact: true })).toBeInTheDocument();
+    expect(screen.getByLabelText('Confirm New Password', { selector: 'input', exact: true })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /Change Password/i })).toBeInTheDocument();
   });
 
@@ -188,9 +188,9 @@ describe("PasswordPage", () => {
   it("should toggle password visibility for all fields", () => {
     render(<PasswordPage />);
     
-    const currentPasswordInput = screen.getByLabelText(/Current Password/i, { selector: 'input' });
-    const newPasswordInput = screen.getByLabelText(/New Password/i, { selector: 'input' });
-    const confirmPasswordInput = screen.getByLabelText(/Confirm New Password/i, { selector: 'input' });
+    const currentPasswordInput = screen.getByLabelText('Current Password', { selector: 'input', exact: true });
+    const newPasswordInput = screen.getByLabelText('New Password', { selector: 'input', exact: true });
+    const confirmPasswordInput = screen.getByLabelText('Confirm New Password', { selector: 'input', exact: true });
     
     // Current password toggle
     const toggleButtons = screen.getAllByRole("button", { name: /Show password/i });
