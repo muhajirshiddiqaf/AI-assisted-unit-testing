@@ -271,11 +271,9 @@ describe("PasswordPage", () => {
     
     fireEvent.click(screen.getByRole("button", { name: /Change Password/i }));
     
-    await waitFor(() => {
-      expect(currentPasswordInput).toHaveValue("");
-      expect(newPasswordInput).toHaveValue("");
-      expect(confirmPasswordInput).toHaveValue("");
-    });
+    await waitFor(() => expect(currentPasswordInput).toHaveValue(""));
+    await waitFor(() => expect(newPasswordInput).toHaveValue(""));
+    await waitFor(() => expect(confirmPasswordInput).toHaveValue(""));
   });
 
   it("should handle minimum valid password length", async () => {

@@ -30,7 +30,9 @@ export default function ProfilePage() {
     if (!fullName) {
       newErrors.fullName = "Full name is required.";
     }
-    if (!/^\S+@\S+\.\S+$/.test(email)) {
+    if (!email) {
+      newErrors.email = "Email is required.";
+    } else if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
       newErrors.email = "Must be a valid email format.";
     }
     if (!/^\d{10,15}$/.test(phone)) {
